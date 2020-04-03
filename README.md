@@ -1,3 +1,4 @@
 # PyLearnQt
 Learn python
-commit 1
+try markdown github TODO
+- [ ] some text
