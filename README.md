@@ -1,4 +1,5 @@
 # PyLearnQt
 Learn python
-try markdown github TODO
-- [ ] some text
+TODO:
+- [ ] recreate exercise class
+- [ ] create window class
