@@ -11,7 +11,7 @@ class exercise():
         self.path=path
     ##\brief functon that return\n all statements for variable in exercise
     def get_statements(self):
-        with open("./exercises/"+self.path) as file:
+        with open(self.path) as file:
             ##\brief all lines in the fiile with exercise
             self.all_statements = file.readlines()
         ##\brief array with statements
@@ -53,15 +53,15 @@ class exercise():
         #it is for python 3.5+
         try:
             import importlib.util
-            spec = importlib.util.spec_from_file_location("module.name", self.path)
+            spec = importlib.util.spec_from_file_location("module.name",self.path)
             ##\brief its not object. Its module with exercise
-            self.program = importlib.util.module_from_speiic("./exe:rcises/"+spec)
+            self.program = importlib.util.module_from_speiic(spec)
             spec.loader.exec_module(self.program)
         #it is for python 3.3-3.4
         except:
             from importlib.machinery import SourceFileLoader
             self.program = SourceFileLoader("module.name", self.path).load_module()
-        if (str(self.program.main(a,b))==str(answer)):
+        if (str(self.program.main(self.a,self.b))==str(answer)):
             return("true")
         else:
             return("false")

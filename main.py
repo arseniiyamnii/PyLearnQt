@@ -9,7 +9,7 @@ import exerciseClass
 if __name__ == "__main__":
     ##\brief Array with path to all exercises
     excercises_path_list = [f for f in listdir("./exercises") if isfile(join("./exercises", f))]
-    a=exerciseClass.exercise(excercises_path_list[0])
+    a=exerciseClass.exercise("./exercises/"+excercises_path_list[0])
     a.get_statements()
     a.create_vars()
     print(a.get_exercise_text())
