@@ -12,3 +12,6 @@ if __name__ == "__main__":
     a=exerciseClass.exercise(excercises_path_list[0])
     a.get_statements()
     a.create_vars()
+    print(a.get_exercise_text())
+    print(str(a.a)+" and "+str(a.b))
+    print(a.compare_answer(input(":")))

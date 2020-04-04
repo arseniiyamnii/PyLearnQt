@@ -1,6 +1,8 @@
 ##\file exerciseClass.py
 #\brief File with class for runing exercises
 import random
+from os.path import isfile, join
+from os import listdir
 ##\brief Class for one exercise
 class exercise():
     ##\brief init function
@@ -11,11 +13,11 @@ class exercise():
     def get_statements(self):
         with open("./exercises/"+self.path) as file:
             ##\brief all lines in the fiile with exercise
-            all_statement = file.readlines()
+            self.all_statements = file.readlines()
         ##\brief array with statements
         statement=[]
-        statement.append(all_statement[1])
-        statement.append(all_statement[2])
+        statement.append(self.all_statements[1])
+        statement.append(self.all_statements[2])
         for one_statement in statement:
             if one_statement[0]=="a":
                 ##\brief Type of variable \a a
@@ -53,17 +55,18 @@ class exercise():
             import importlib.util
             spec = importlib.util.spec_from_file_location("module.name", self.path)
             ##\brief its not object. Its module with exercise
-            self.program = importlib.util.module_from_spec(spec)
+            self.program = importlib.util.module_from_speiic("./exe:rcises/"+spec)
             spec.loader.exec_module(self.program)
         #it is for python 3.3-3.4
         except:
             from importlib.machinery import SourceFileLoader
             self.program = SourceFileLoader("module.name", self.path).load_module()
         if (str(self.program.main(a,b))==str(answer)):
-            return "true"
+            return("true")
         else:
-            return "false"
+            return("false")
+    ##\brief function that give all exercise text
     def get_exercise_text(self):
-        pass
+        return(self.all_statements[4:])
 
 
