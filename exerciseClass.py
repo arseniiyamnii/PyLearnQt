@@ -14,15 +14,14 @@ class exercise():
         with open(self.path) as file:
             ##\brief all lines in the fiile with exercise
             self.all_statements = file.readlines()
-        ##\brief array with statements
-        statement=[]
+        statement=[] #array with statements
         statement.append(self.all_statements[1])
         statement.append(self.all_statements[2])
         for one_statement in statement:
             if one_statement[0]=="a":
                 ##\brief Type of variable \a a
                 self.a_type=one_statement[2:5]
-                ##\brief mon for \a a variable
+                ##\brief min for \a a variable
                 self.a_range_from=one_statement[(one_statement.find("from")+5):(one_statement.find("to")-1)]
                 ##\brief max for \a a variable
                 self.a_range_to=one_statement[(one_statement.find("to")+3):-2]
