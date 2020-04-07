@@ -10,7 +10,8 @@ class UI(QMainWindow):
     ##\brief initialise ui file
     #\details initialise all gui widgets, to control them\n
     #and coonnect functions to buttons
-    def __init__(self):
+    def __init__(self,working_exercise):
+        self.working_exercise=working_exercise
         super(UI, self).__init__()
         uic.loadUi("./qtUi/main.ui", self)
         ##\brief window with all exercise text
@@ -23,5 +24,5 @@ class UI(QMainWindow):
         self.show()
     ##\brief function that add text with exercise
     def addExerciseText(self):
-        self.exerciseText.setText("fuuuuckyeeeah")
+        self.exerciseText.setText(self.working_exercise.get_exercise_text())
 

@@ -12,14 +12,15 @@ import sys
 if __name__ == "__main__":
     ##\brief Array with path to all exercises
     excercises_path_list = [f for f in listdir("./exercises") if isfile(join("./exercises", f))]
-    a=exerciseClass.exercise("./exercises/"+excercises_path_list[0])
-    a.get_statements()
-    a.create_vars()
+    working_exercise=exerciseClass.exercise("./exercises/"+excercises_path_list[0])
+    working_exercise.get_statements()
+    working_exercise.create_vars()
     '''
-    print(a.get_exercise_text())
-    print(str(a.a)+" and "+str(a.b))
-    print(a.compare_answer(input(": ")))
+    print(working_exercise.get_exercise_text())
+    print(str(working_exercise.a)+" and "+str(working_exercise.b))
+    print(working_exercise.compare_answer(input(": ")))
     '''
     app = QApplication(sys.argv)
-    window = guiClass.UI()
+    window = guiClass.UI(working_exercise)
     app.exec_()
+

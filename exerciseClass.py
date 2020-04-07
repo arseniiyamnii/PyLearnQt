@@ -66,6 +66,9 @@ class exercise():
             return("false")
     ##\brief function that give all exercise text
     def get_exercise_text(self):
-        return(self.all_statements[4:])
+        all_statements=""
+        for line in self.all_statements[4:]:
+            all_statements+=line
+        return(all_statements)
 
 
