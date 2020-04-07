@@ -18,7 +18,7 @@ if __name__ == "__main__":
     '''
     print(a.get_exercise_text())
     print(str(a.a)+" and "+str(a.b))
-    print(a.compare_answer(input(":")))
+    print(a.compare_answer(input(": ")))
     '''
     app = QApplication(sys.argv)
     window = guiClass.UI()
