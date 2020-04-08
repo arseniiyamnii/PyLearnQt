@@ -1,3 +1,4 @@
+#!/bin/env python3
 ##\file main.py
 #\brief Main file witch runing all program\n
 #license MIT\n

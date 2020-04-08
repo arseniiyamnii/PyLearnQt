@@ -70,5 +70,13 @@ class exercise():
         for line in self.all_statements[4:]:
             all_statements+=line
         return(all_statements)
-
+    ##\brief change exercise path
+    #\details change path to random path in exercises folder
+    def change_exercise(self):
+        exercises=[]
+        exercises_path_list = [f for f in listdir("./exercises") if isfile(join("./exercises", f))]
+        for one_exercise in exercises_path_list:
+            exercises.append(ecsersize("./exercises/"+one_exercise))
+        self.path=exercises[random.randint(0,len(exercises)-1)]
+        
 
