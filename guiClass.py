@@ -22,8 +22,7 @@ class UI(QMainWindow):
         self.answerLine=self.findChild(QLineEdit, "lineEdit")
         ##\brief button, to push answer
         self.pushAnswerBtton=self.findChild(QPushButton,"pushButton")
-        self.pushAnswerBtton.clicked.connect(self.resultWindow)#here we add some function to pushbutton
-        self.dialog=resultClass.UI()
+        self.pushAnswerBtton.clicked.connect(self.getAnswerText)#here we add some function to pushbutton
         self.addExerciseText()
         self.show()
     ##\brief function that add text with exercise
@@ -32,11 +31,17 @@ class UI(QMainWindow):
     ##\brief get answer text
     #\details print answer text to terminal,\n and remove text from input line
     def getAnswerText(self):
-        print(self.answerLine.text())
+        self.resultWindow(self.working_exercise.compare_answer(self.answerLine.text()))
         self.answerLine.setText("")
     ##\brief open result window
-    def resultWindow(self):
+    def resultWindow(self,answer):
+        self.dialog=resultClass.UI()
+        if answer=="true":
+            self.dialog.resultLabel.setText("Correct")
+        else:
+            self.dialog.resultLabel.setText("Wrong!")
         self.dialog.show() 
         self.dialog.timer.timeout.connect(self.dialog.handleTimer)
         self.dialog.timer.start(1000)
-
+        self.working_exercise.change_exercise()
+        self.addExerciseText()
