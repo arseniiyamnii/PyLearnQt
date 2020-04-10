@@ -1,8 +1,8 @@
 #!/bin/env python3
 ##\file main.py
-#\brief Main file witch runing all program\n
+#\brief Main file witch running all program\n
 #license MIT\n
-##\warning dependensies:\n
+##\warning dependence's:\n
 #module \b os
 from os import listdir
 from os.path import isfile, join

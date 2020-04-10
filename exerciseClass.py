@@ -1,5 +1,5 @@
 ##\file exerciseClass.py
-#\brief File with class for runing exercises
+#\brief File with class for running exercises
 import random
 from os.path import isfile, join
 from os import listdir
@@ -9,10 +9,10 @@ class exercise():
     #\details it get path to file,\n and create variable self.path
     def __init__(self,path):
         self.path=path
-    ##\brief functon that return\n all statements for variable in exercise
+    ##\brief function that return\n all statements for variable in exercise
     def get_statements(self):
         with open(self.path) as file:
-            ##\brief all lines in the fiile with exercise
+            ##\brief all lines in the file with exercise
             self.all_statements = file.readlines()
         statement=[] #array with statements
         statement.append(self.all_statements[1])
@@ -47,7 +47,7 @@ class exercise():
             ##\brief Created \a b variable
             self.b=random.randint(int(self.b_range_from),int(self.b_range_to))
     ##\brief function that compare answer
-    #\warning this function can used only in python 3.3+(if i rigth)
+    #\warning this function can used only in python 3.3+(if i right)
     def compare_answer(self,answer):
         #it is for python 3.5+
         try:
