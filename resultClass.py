@@ -4,6 +4,7 @@
 ##\warning it import PyQt5
 from PyQt5 import uic
 from PyQt5.QtWidgets import QMainWindow, QLabel, QProgressBar
+from PyQt5.QtCore import QTimer
 import time
 ##\brief class with result GUI
 #\details same as file
@@ -14,9 +15,20 @@ class UI(QMainWindow):
         self.resultLabel=self.findChild(QLabel, "label")
         self.resultLabel.setText("hello world")
         self.timeBar=self.findChild(QProgressBar, "progressBar")
+       # self.timeBar.setMaximum(10)
         #self.runTimer()
+        self.timer = QTimer()
+        self.timer.timeout.connect(self.handleTimer)
+        self.timer.start(1000)
+    def handleTimer(self):
+        value = self.timeBar.value()
+        if value < 90:
+            value = value + 10
+            self.timeBar.setValue(value)
+        else:
+            self.timer.stop()
+            self.close()
     def runTimer(self):
-        self.timeBar.setMaximum(10)
         timeToExpired=0
         while timeToExpired<3:
             timeToExpired+=1

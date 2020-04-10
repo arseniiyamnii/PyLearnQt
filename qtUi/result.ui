@@ -52,7 +52,7 @@
      <bool>false</bool>
     </property>
     <property name="format">
-     <string>%p sec.</string>
+      <string><!--%p sec.--></string>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
