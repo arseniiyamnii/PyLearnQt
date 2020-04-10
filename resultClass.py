@@ -1,4 +1,4 @@
-##/file resultClass.py
+##\file resultClass.py
 ##\brief class to result UI
 #\details it file contain class, to view UI file with GUI \n to result window\n
 ##\warning it import PyQt5
@@ -15,11 +15,9 @@ class UI(QMainWindow):
         self.resultLabel=self.findChild(QLabel, "label")
         self.resultLabel.setText("hello world")
         self.timeBar=self.findChild(QProgressBar, "progressBar")
-       # self.timeBar.setMaximum(10)
-        #self.runTimer()
         self.timer = QTimer()
-        self.timer.timeout.connect(self.handleTimer)
-        self.timer.start(1000)
+    ##\brief progress bar method
+    #\details with running timer add to progress bar 10\n to value(like 10%)
     def handleTimer(self):
         value = self.timeBar.value()
         if value < 90:
@@ -28,9 +26,3 @@ class UI(QMainWindow):
         else:
             self.timer.stop()
             self.close()
-    def runTimer(self):
-        timeToExpired=0
-        while timeToExpired<3:
-            timeToExpired+=1
-            time.sleep(1)
-            self.timeBar.setValue(timeToExpired)

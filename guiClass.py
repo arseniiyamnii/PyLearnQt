@@ -6,6 +6,7 @@ from PyQt5 import uic
 from PyQt5.QtWidgets import QMainWindow, QPushButton, QTextBrowser, QLineEdit
 import sys
 import resultClass
+from PyQt5.QtCore import QTimer
 ##\brief class with GUI
 class UI(QMainWindow):
     ##\brief initialize ui file
@@ -23,15 +24,19 @@ class UI(QMainWindow):
         self.pushAnswerBtton=self.findChild(QPushButton,"pushButton")
         self.pushAnswerBtton.clicked.connect(self.resultWindow)#here we add some function to pushbutton
         self.dialog=resultClass.UI()
+        self.addExerciseText()
         self.show()
     ##\brief function that add text with exercise
     def addExerciseText(self):
         self.exerciseText.setText("a="+str(self.working_exercise.a)+"\nb="+str(self.working_exercise.b)+"\n"+self.working_exercise.get_exercise_text())
-
+    ##\brief get answer text
+    #\details print answer text to terminal,\n and remove text from input line
     def getAnswerText(self):
         print(self.answerLine.text())
         self.answerLine.setText("")
+    ##\brief open result window
     def resultWindow(self):
-        #resultApp=QApplication(sys.argv)
         self.dialog.show() 
-        #self.dialog.runTimer()
+        self.dialog.timer.timeout.connect(self.dialog.handleTimer)
+        self.dialog.timer.start(1000)
+

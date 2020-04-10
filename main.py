@@ -16,11 +16,6 @@ if __name__ == "__main__":
     working_exercise=exerciseClass.exercise("./exercises/"+excercises_path_list[0])
     working_exercise.get_statements()
     working_exercise.create_vars()
-    '''
-    print(working_exercise.get_exercise_text())
-    print(str(working_exercise.a)+" and "+str(working_exercise.b))
-    print(working_exercise.compare_answer(input(": ")))
-    '''
     app = QApplication(sys.argv)
     window = guiClass.UI(working_exercise)
     app.exec_()
