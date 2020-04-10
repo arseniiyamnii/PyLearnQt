@@ -1,16 +1,16 @@
 ##\file guiClass.py
-#\brief class with qt GUI
-#\warning dependence's\n
+#\brief class with qt gui
+#\warning dependensies\n
 #module \b PyQt5
 from PyQt5 import uic
 from PyQt5.QtWidgets import QMainWindow, QPushButton, QTextBrowser, QLineEdit
 import sys
 import resultClass
-##\brief class with GUI
+##\brief class with gui
 class UI(QMainWindow):
-    ##\brief initialize ui file
-    #\details initialize all GUI qwidgets, to control them\n
-    #and connect functions to buttons
+    ##\brief initialise ui file
+    #\details initialise all gui qwidgets, to control them\n
+    #and coonnect functions to buttons
     def __init__(self,working_exercise):
         self.working_exercise=working_exercise
         super(UI, self).__init__()
@@ -33,5 +33,4 @@ class UI(QMainWindow):
         self.answerLine.setText("")
     def resultWindow(self):
         #resultApp=QApplication(sys.argv)
-        self.dialog.show()
-
+        self.dialog.show() 
