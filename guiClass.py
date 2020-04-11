@@ -3,6 +3,7 @@
 #\warning dependence's\n
 #module \b PyQt5
 from PyQt5 import uic
+import random
 from PyQt5.QtWidgets import QMainWindow, QPushButton, QTextBrowser, QLineEdit
 import sys
 import resultClass
@@ -23,15 +24,16 @@ class UI(QMainWindow):
         ##\brief button, to push answer
         self.pushAnswerBtton=self.findChild(QPushButton,"pushButton")
         self.pushAnswerBtton.clicked.connect(self.getAnswerText)#here we add some function to pushbutton
+        self.getExercise()
         self.addExerciseText()
         self.show()
     ##\brief function that add text with exercise
     def addExerciseText(self):
-        self.exerciseText.setText("a="+str(self.working_exercise.a)+"\nb="+str(self.working_exercise.b)+"\n"+self.working_exercise.get_exercise_text())
+        self.exerciseText.setText("a="+str(self.runing_exercise.a)+"\nb="+str(self.runing_exercise.b)+"\n"+self.runing_exercise.get_exercise_text())
     ##\brief get answer text
     #\details print answer text to terminal,\n and remove text from input line
     def getAnswerText(self):
-        self.resultWindow(self.working_exercise.compare_answer(self.answerLine.text()))
+        self.resultWindow(self.runing_exercise.compare_answer(self.answerLine.text()))
         self.answerLine.setText("")
     ##\brief open result window
     def resultWindow(self,answer):
@@ -43,5 +45,9 @@ class UI(QMainWindow):
         self.dialog.show() 
         self.dialog.timer.timeout.connect(self.dialog.handleTimer)
         self.dialog.timer.start(1000)
-        self.working_exercise.change_exercise()
-        self.addExerciseText()
+        self.runing_exercise.change_exercise()
+        self.runing_exercise.create_vars()
+    def getExercise(self):
+        self.runing_exercise=self.working_exercise[random.randint(1,len(self.working_exercise)-1)]
+        self.runing_exercise.get_statements()
+        self.runing_exercise.create_vars()

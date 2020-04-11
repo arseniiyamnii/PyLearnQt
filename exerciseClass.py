@@ -3,6 +3,15 @@
 import random
 from os.path import isfile, join
 from os import listdir
+try:
+    import importlib.util
+except:
+    pass
+try:
+    from importlib.machinery import SourceFileLoader
+except:
+    pass
+
 ##\brief Class for one exercise
 class exercise():
     ##\brief init function
@@ -51,15 +60,16 @@ class exercise():
     def compare_answer(self,answer):
         #it is for python 3.5+
         try:
-            import importlib.util
             spec = importlib.util.spec_from_file_location("module.name",self.path)
             ##\brief its not object. Its module with exercise
             self.program = importlib.util.module_from_speiic(spec)
             spec.loader.exec_module(self.program)
         #it is for python 3.3-3.4
         except:
-            from importlib.machinery import SourceFileLoader
-            self.program = SourceFileLoader("module.name", self.path).load_module()
+            try:
+                self.program = SourceFileLoader("module.name", self.path).load_module()
+            except:
+                pass
         if (str(self.program.main(self.a,self.b))==str(answer)):
             return("true")
         else:
@@ -78,5 +88,5 @@ class exercise():
         for one_exercise in exercises_path_list:
             exercises.append(exercise("./exercises/"+one_exercise))
         self.path=exercises[random.randint(0,len(exercises)-1)]
-        
+        print("exercise was changed")
 

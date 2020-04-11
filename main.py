@@ -13,9 +13,9 @@ import sys
 if __name__ == "__main__":
     ##\brief Array with path to all exercises
     excercises_path_list = [f for f in listdir("./exercises") if isfile(join("./exercises", f))]
-    working_exercise=exerciseClass.exercise("./exercises/"+excercises_path_list[0])
-    working_exercise.get_statements()
-    working_exercise.create_vars()
+    working_exercise=[]
+    for one_exercise in excercises_path_list:
+        working_exercise.append(exerciseClass.exercise("./exercises/"+excercises_path_list[0]))
     app = QApplication(sys.argv)
     window = guiClass.UI(working_exercise)
     app.exec_()
