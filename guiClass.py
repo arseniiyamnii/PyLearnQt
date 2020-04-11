@@ -45,9 +45,11 @@ class UI(QMainWindow):
         self.dialog.show() 
         self.dialog.timer.timeout.connect(self.dialog.handleTimer)
         self.dialog.timer.start(1000)
-        self.runing_exercise.change_exercise()
+        self.getExercise()
+        #self.runing_exercise.change_exercise()
         self.runing_exercise.create_vars()
+        self.addExerciseText()
     def getExercise(self):
-        self.runing_exercise=self.working_exercise[random.randint(1,len(self.working_exercise)-1)]
+        self.runing_exercise=self.working_exercise[random.randint(0,len(self.working_exercise)-1)]
         self.runing_exercise.get_statements()
         self.runing_exercise.create_vars()

@@ -87,6 +87,6 @@ class exercise():
         exercises_path_list = [f for f in listdir("./exercises") if isfile(join("./exercises", f))]
         for one_exercise in exercises_path_list:
             exercises.append(exercise("./exercises/"+one_exercise))
-        self.path=exercises[random.randint(0,len(exercises)-1)]
+        self.path=exercises_path_list[rando.randint(0,len(exercises_path_list)-1)]
         print("exercise was changed")
 

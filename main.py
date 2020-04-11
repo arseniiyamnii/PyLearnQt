@@ -15,7 +15,7 @@ if __name__ == "__main__":
     excercises_path_list = [f for f in listdir("./exercises") if isfile(join("./exercises", f))]
     working_exercise=[]
     for one_exercise in excercises_path_list:
-        working_exercise.append(exerciseClass.exercise("./exercises/"+excercises_path_list[0]))
+        working_exercise.append(exerciseClass.exercise("./exercises/"+one_exercise))
     app = QApplication(sys.argv)
     window = guiClass.UI(working_exercise)
     app.exec_()
