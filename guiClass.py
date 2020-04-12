@@ -24,6 +24,7 @@ class UI(QMainWindow):
         ##\brief button, to push answer
         self.pushAnswerBtton=self.findChild(QPushButton,"pushButton")
         self.pushAnswerBtton.clicked.connect(self.getAnswerText)#here we add some function to pushbutton
+        ##Need to add init to Top Menu
         self.getExercise()
         self.addExerciseText()
         self.show()
