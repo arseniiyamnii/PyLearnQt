@@ -8,12 +8,15 @@ from PyQt5.QtWidgets import QMainWindow, QPushButton, QTextBrowser, QLineEdit
 import sys
 import resultClass
 from PyQt5.QtCore import QTimer
+import json
 ##\brief class with GUI
 class UI(QMainWindow):
     ##\brief initialize ui file
     #\details initialize all GUI qwidgets, to control them\n
     #and connect functions to buttons
     def __init__(self,working_exercise):
+        with open("language.json", "r") as language_file:
+            self.language_dict = json.load(language_file)
         self.working_exercise=working_exercise
         super(UI, self).__init__()
         uic.loadUi("./qtUi/main.ui", self)
@@ -23,6 +26,7 @@ class UI(QMainWindow):
         self.answerLine=self.findChild(QLineEdit, "lineEdit")
         ##\brief button, to push answer
         self.pushAnswerBtton=self.findChild(QPushButton,"pushButton")
+        self.pushAnswerBtton.setText(self.language_dict["words"]["pushButton"])
         self.pushAnswerBtton.clicked.connect(self.getAnswerText)#here we add some function to pushbutton
         ##Need to add init to Top Menu
         self.getExercise()
