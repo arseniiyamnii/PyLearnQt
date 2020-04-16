@@ -44,9 +44,9 @@ class UI(QMainWindow):
     def resultWindow(self,answer):
         self.dialog=resultClass.UI()
         if answer=="true":
-            self.dialog.resultLabel.setText("Correct")
+            self.dialog.resultLabel.setText(self.language_dict["words"]["correct"])
         else:
-            self.dialog.resultLabel.setText("Wrong!")
+            self.dialog.resultLabel.setText(self.language_dict["words"]["wrong"])
         self.dialog.show() 
         self.dialog.timer.timeout.connect(self.dialog.handleTimer)
         self.dialog.timer.start(1000)

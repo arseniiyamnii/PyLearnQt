@@ -1,6 +1,8 @@
 {"language": "en",
   "words": {
   "pushButton":"PushMe",
-  "topMenuFile":"File"
+  "topMenuFile":"File",
+  "wrong":"Wrong!",
+  "correct":"Correct!"
   }
 }
