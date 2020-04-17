@@ -4,7 +4,7 @@
 #module \b PyQt5
 from PyQt5 import uic
 import random
-from PyQt5.QtWidgets import QMainWindow, QPushButton, QTextBrowser, QLineEdit
+from PyQt5.QtWidgets import QMainWindow, QPushButton, QTextBrowser, QLineEdit,QMenu,QAction
 import sys
 import resultClass
 from PyQt5.QtCore import QTimer
@@ -24,7 +24,10 @@ class UI(QMainWindow):
         self.exerciseText=self.findChild(QTextBrowser, "textBrowser")
         ##\brief line, with user answer
         self.answerLine=self.findChild(QLineEdit, "lineEdit")
-        ##\brief button, to push answer
+        self.menuSettingsButton=self.findChild(QAction, "actionSettings")
+        self.menuFileButton=self.findChild(QMenu, "menuFile")
+        self.menuFileButton.setTitle(self.language_dict["words"]["topMenuFile"])
+        self.menuSettingsButton.setText(self.language_dict["words"]["topMenuSettings"])
         self.pushAnswerBtton=self.findChild(QPushButton,"pushButton")
         self.pushAnswerBtton.setText(self.language_dict["words"]["pushButton"])
         self.pushAnswerBtton.clicked.connect(self.getAnswerText)#here we add some function to pushbutton

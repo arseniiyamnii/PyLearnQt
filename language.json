@@ -1,7 +1,8 @@
-{"language": "en",
+{"language": "English",
   "words": {
   "pushButton":"PushMe",
   "topMenuFile":"File",
+  "topMenuSettings":"Settings",
   "wrong":"Wrong!",
   "correct":"Correct!"
   }
