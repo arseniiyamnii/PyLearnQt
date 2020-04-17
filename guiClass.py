@@ -15,7 +15,7 @@ class UI(QMainWindow):
     #\details initialize all GUI qwidgets, to control them\n
     #and connect functions to buttons
     def __init__(self,working_exercise):
-        with open("language.json", "r") as language_file:
+        with open("languages/language.json", "r") as language_file:
             self.language_dict = json.load(language_file)
         self.working_exercise=working_exercise
         super(UI, self).__init__()
