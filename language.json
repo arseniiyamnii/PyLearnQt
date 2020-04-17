@@ -3,6 +3,11 @@
   "pushButton":"PushMe",
   "topMenuFile":"File",
   "topMenuSettings":"Settings",
+  "topMenuExit":"Exit",
+  "topMenuNext":"Next Exercise",
+  "settingsLanguage":"Switch language from ",
+  "settingsTo":" to ",
+  "settingsTime":"Switch time to watch result from ",
   "wrong":"Wrong!",
   "correct":"Correct!"
   }
