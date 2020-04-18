@@ -1,4 +1,5 @@
 ##\file guiClass.py
+#\author Arsenii Yamnii
 #\brief class with qt GUI
 #\warning dependence's\n
 #module \b PyQt5
@@ -14,8 +15,9 @@ import json
 #and run other windows, like result, and config window
 class UI(QMainWindow):
     ##\brief initialize ui file
-    #\details initialize all GUI qwidgets, to control them\n
-    #and connect functions to buttons
+    #\details initialize all GUI qwidgets, to control them,\n
+    #connect functions to buttons,\n
+    #set text to buttons from language dictionary,\n
     def __init__(self,working_exercise):
         with open("languages/language.json", "r") as language_file:
             ##\brief dictionary with language
@@ -33,14 +35,20 @@ class UI(QMainWindow):
         ##\brief answer winget
         #\details that widget for user input...answer input.
         self.answerLine=self.findChild(QLineEdit, "lineEdit")
+        ##\brief Settings button
+        #\details QT widget with TopMenu button 'Settings'
         self.menuSettingsButton=self.findChild(QAction, "actionSettings")
+        ##\brief File button
+        #\details TopMenu button 'File'
         self.menuFileButton=self.findChild(QMenu, "menuFile")
+
         self.menuFileButton.setTitle(self.language_dict["words"]["topMenuFile"])
         self.menuSettingsButton.setText(self.language_dict["words"]["topMenuSettings"])
+        ##\brief push button widget
+        #\details QT widget Button to Push Redy answer
         self.pushAnswerBtton=self.findChild(QPushButton,"pushButton")
-        self.pushAnswerBtton.setText(self.language_dict["words"]["pushButton"])
+        self.pushAnswerBtton.setText(self.language_dict["words"]["pushButton"])#add text to PushButton
         self.pushAnswerBtton.clicked.connect(self.getAnswerText)#here we add some function to pushbutton
-        ##Need to add init to Top Menu
         self.getExercise()
         self.addExerciseText()
         self.show()
@@ -48,12 +56,17 @@ class UI(QMainWindow):
     def addExerciseText(self):
         self.exerciseText.setText("a="+str(self.runing_exercise.a)+"\nb="+str(self.runing_exercise.b)+"\n"+self.runing_exercise.get_exercise_text())
     ##\brief get answer text
-    #\details print answer text to terminal,\n and remove text from input line
+    #\details Push answer text to runing_exercise.coomare_answer function,\n
+    #get result from compare_answer in bool format,\n
+    #send it to resultwindow function\n
+    #,\n and remove text from input line
     def getAnswerText(self):
         self.resultWindow(self.runing_exercise.compare_answer(self.answerLine.text()))
         self.answerLine.setText("")
     ##\brief open result window
     def resultWindow(self,answer):
+        ##\brief result window object
+        #\details object that contain all result window Widgets
         self.dialog=resultClass.UI()
         if answer=="true":
             self.dialog.resultLabel.setText(self.language_dict["words"]["correct"])
@@ -66,6 +79,8 @@ class UI(QMainWindow):
         #self.runing_exercise.change_exercise()
         self.runing_exercise.create_vars()
         self.addExerciseText()
+    ##\brief Switch exercise
+    #\details Insert to runing_exercise variable, new obgect from working_exercise array
     def getExercise(self):
         self.runing_exercise=self.working_exercise[random.randint(0,len(self.working_exercise)-1)]
         self.runing_exercise.get_statements()
