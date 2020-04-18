@@ -9,20 +9,29 @@ import sys
 import resultClass
 from PyQt5.QtCore import QTimer
 import json
-##\brief class with GUI
+##\brief class with gui
+#\details It class contain all Qt Widgets for main window,\n
+#and run other windows, like result, and config window
 class UI(QMainWindow):
     ##\brief initialize ui file
     #\details initialize all GUI qwidgets, to control them\n
     #and connect functions to buttons
     def __init__(self,working_exercise):
         with open("languages/language.json", "r") as language_file:
+            ##\brief dictionary with language
+            #\details contain dictionary with language. 
             self.language_dict = json.load(language_file)
+        ##\brief exercise array
+        #\details array that contain all exercise objects.\n
         self.working_exercise=working_exercise
         super(UI, self).__init__()
         uic.loadUi("./qtUi/main.ui", self)
-        ##\brief window with all exercise text
+        ##\brief exercise widget
+        #\details that widget contain text with exercise,\n
+        #and variables.
         self.exerciseText=self.findChild(QTextBrowser, "textBrowser")
-        ##\brief line, with user answer
+        ##\brief answer winget
+        #\details that widget for user input...answer input.
         self.answerLine=self.findChild(QLineEdit, "lineEdit")
         self.menuSettingsButton=self.findChild(QAction, "actionSettings")
         self.menuFileButton=self.findChild(QMenu, "menuFile")
