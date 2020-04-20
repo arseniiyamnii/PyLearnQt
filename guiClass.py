@@ -19,7 +19,7 @@ class UI(QMainWindow):
     #connect functions to buttons,\n
     #set text to buttons from language dictionary,\n
     def __init__(self,working_exercise):
-        with open("languages/language.json", "r") as language_file:
+        with open("languages/language.json", "r") as language_file: #open language file
             ##\brief dictionary with language
             #\details contain dictionary with language. 
             self.language_dict = json.load(language_file)
@@ -27,7 +27,7 @@ class UI(QMainWindow):
         #\details array that contain all exercise objects.\n
         self.working_exercise=working_exercise
         super(UI, self).__init__()
-        uic.loadUi("./qtUi/main.ui", self)
+        uic.loadUi("./qtUi/main.ui", self)#initialize UI from GUI file
         ##\brief exercise widget
         #\details that widget contain text with exercise,\n
         #and variables.
@@ -42,12 +42,12 @@ class UI(QMainWindow):
         #\details TopMenu button 'File'
         self.menuFileButton=self.findChild(QMenu, "menuFile")
 
-        self.menuFileButton.setTitle(self.language_dict["words"]["topMenuFile"])
-        self.menuSettingsButton.setText(self.language_dict["words"]["topMenuSettings"])
+        self.menuFileButton.setTitle(self.language_dict["words"]["topMenuFile"])#add text to File Button
+        self.menuSettingsButton.setText(self.language_dict["words"]["topMenuSettings"])#add text to Settings Button
         ##\brief push button widget
         #\details QT widget Button to Push Redy answer
         self.pushAnswerBtton=self.findChild(QPushButton,"pushButton")
-        self.pushAnswerBtton.setText(self.language_dict["words"]["pushButton"])#add text to PushButton
+        self.pushAnswerBtton.setText(self.language_dict["words"]["pushButton"])#add text to Push Button
         self.pushAnswerBtton.clicked.connect(self.getAnswerText)#here we add some function to pushbutton
         self.getExercise()
         self.addExerciseText()
