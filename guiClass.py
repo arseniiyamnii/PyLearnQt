@@ -44,6 +44,7 @@ class UI(QMainWindow):
 
         self.menuFileButton.setTitle(self.language_dict["words"]["topMenuFile"])#add text to File Button
         self.menuSettingsButton.setText(self.language_dict["words"]["topMenuSettings"])#add text to Settings Button
+        self.menuSettingsButton.triggered.connect(self.runSettings)#add action to Settings Button
         ##\brief push button widget
         #\details QT widget Button to Push Redy answer
         self.pushAnswerBtton=self.findChild(QPushButton,"pushButton")
@@ -52,6 +53,8 @@ class UI(QMainWindow):
         self.getExercise()
         self.addExerciseText()
         self.show()
+    def runSettings(self):
+        print("runSettings")
     ##\brief function that add text with exercise
     def addExerciseText(self):
         self.exerciseText.setText("a="+str(self.runing_exercise.a)+"\nb="+str(self.runing_exercise.b)+"\n"+self.runing_exercise.get_exercise_text())

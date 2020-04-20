@@ -1,4 +1,4 @@
-    #\file resultClass.py
+#\file resultClass.py
 ##\brief class to result UI
 #\details it file contain class, to view UI file with GUI \n to result window\n
 ##\warning it import PyQt5
