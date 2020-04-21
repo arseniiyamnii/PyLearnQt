@@ -19,7 +19,7 @@ class UI(QMainWindow):
     #connect functions to buttons,\n
     #set text to buttons from language dictionary,\n
     def __init__(self,working_exercise):
-        with open("languages/language.json", "r") as language_file: #open language file
+        with open("languages/en.json", "r") as language_file: #open language file
             ##\brief dictionary with language
             #\details contain dictionary with language. 
             self.language_dict = json.load(language_file)
