@@ -13,4 +13,5 @@ class UI(QMainWindow):
         self.timelabel=self.findChild(QLabel, "label_2")
         self.languageCombo=self.findChild(QComboBox,"comboBox")
         self.timeSpin=self.findChild(QSpinBox, "spinBox")
-
+        with open("config.json", "rw") as configFile:
+            self.configDictionary=json.load(configFile)

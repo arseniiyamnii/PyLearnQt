@@ -7,7 +7,7 @@ from PyQt5 import uic
 import random
 from PyQt5.QtWidgets import QMainWindow, QPushButton, QTextBrowser, QLineEdit,QMenu,QAction
 import sys
-import resultClass
+import resultClass, settingsClass
 from PyQt5.QtCore import QTimer
 import json
 ##\brief class with gui
@@ -53,7 +53,12 @@ class UI(QMainWindow):
         self.getExercise()
         self.addExerciseText()
         self.show()
+    ##\brief run Settings window
+    #\details create settings window from SettingsClass
     def runSettings(self):
+        self.settingsWindow=settingsClass.UI()
+        self.settingsWindow.show()
+
         print("runSettings")
     ##\brief function that add text with exercise
     def addExerciseText(self):
