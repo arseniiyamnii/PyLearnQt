@@ -35,6 +35,7 @@ class UI(QMainWindow):
         #\details initialise QSpinBox widget, to view anbd chose,\n
         #time to waiting result window
         self.timeSpin=self.findChild(QSpinBox, "spinBox")
+
         with open("config.json", "r") as configFile: #open config.json file, to read and write
             ##\brief config dictionary
             #\details dictionary, that load from config.json file,\n
@@ -45,6 +46,22 @@ class UI(QMainWindow):
             ##\brief language dictionary
             #\details dictianary with language, from language file
             self.languageDictionary=json.load(langFile) #create dictionary from languageFile
+        self.saveButton.clicked.connect(self.saveConfig) #connect function saveConfig to "Save" button
+        self.saveExitButton.clicked.connect(self.saveConfigExit) #connect function saveConfigExit to "Save and Exit Button"
+        self.timeSpin.setMinimum(1) #set minimum to spin box
+        self.timeSpin.setMaximum(10) # set maximum to spin box
+        self.timeSpin.Value(int(self.configDictionary["tieWaitResult"])) # set current value to sin box (get it from config file)
+        languages_path_list = [f for f in listdir("./language") if isfile(join("./languages", f))] # get all languages pathes
+        languageArray=[[],[]] #create clean array to languages pathes and names
+        for language in languages_path_list: #appending items to previous array
+            with open("./languages/"+language, "r") as langF:
+                langDict=json.load(langF)
+
+            languageArray[0].append(language[:-4])
+            print(language[:-4])
+            languageArray[1].append(langDict["language"])
+        self.languageCombo.addItems(languageArray[1]) #adding items to language combobox
+
     ##\brief Save Config
     #\details function to write new variables, to config.json file. 
     def saveConfig(self):
@@ -52,3 +69,8 @@ class UI(QMainWindow):
         self.configDictionary["tieWaitResult"]=self.timeSpin.text()#change timeWaitResult in config dictionary
         with open("config.json", "w") as configFile: #open file to write changes
             json.dump(self.configDictionary, configFile) #write changes to file
+    ##\brief Save and Exit
+    #\details Function that run saveConfig function, for saving config, and then close window
+    def saveConfigExit(self):
+        self.saveConfig()
+        self.close()
