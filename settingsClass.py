@@ -35,9 +35,20 @@ class UI(QMainWindow):
         #\details initialise QSpinBox widget, to view anbd chose,\n
         #time to waiting result window
         self.timeSpin=self.findChild(QSpinBox, "spinBox")
-        with open("config.json", "rw") as configFile: #open config.json file, to read and write
+        with open("config.json", "r") as configFile: #open config.json file, to read and write
             ##\brief config dictionary
             #\details dictionary, that load from config.json file,\n
             #witch contain information about language,\n
             #and time to waiting result window
             self.configDictionary=json.load(configFile) # create dictionary, from config.json file, with json module
+        with open("./languages/"+self.configDictionary["language"]+".json","r") as langFile: #open language file
+            ##\brief language dictionary
+            #\details dictianary with language, from language file
+            self.languageDictionary=json.load(langFile) #create dictionary from languageFile
+    ##\brief Save Config
+    #\details function to write new variables, to config.json file. 
+    def saveConfig(self):
+        self.configDictionary["language"]=self.languageCombo.text()#change language entry in config Dictionary
+        self.configDictionary["tieWaitResult"]=self.timeSpin.text()#change timeWaitResult in config dictionary
+        with open("config.json", "w") as configFile: #open file to write changes
+            json.dump(self.configDictionary, configFile) #write changes to file
