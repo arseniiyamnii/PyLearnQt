@@ -1,13 +1,20 @@
 # PyLearnQt
 Learn python
-# TODO:
-- [ ] recreate exercise class
-- [ ] create window class
+# From author
+yes...its pretty shit...sorry
 # Documentation
 I use Doxygen to documentation my code
 in ubuntu open main folder in command line, and run:
 `doxygen doxygen.config`
 When i finish with this program, i compile documentation in html format
+# How to use
+run with `./run.sh`
+input answer
+see result
+Done!
+# Customise
+Add own exercises to `./exercise/` folder
+Add own languages to `./languages/` folder
 # License
 MIT License
 
