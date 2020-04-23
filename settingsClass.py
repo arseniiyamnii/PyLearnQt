@@ -54,21 +54,24 @@ class UI(QMainWindow):
         self.timeSpin.setMaximum(10) # set maximum to spin box
         self.timeSpin.setValue(int(self.configDictionary["tieWaitResult"])) # set current value to sin box (get it from config file)
         languages_path_list = [f for f in listdir("./languages") if isfile(join("./languages", f))] # get all languages pathes
-        languageArray=[[],[]] #create clean array to languages pathes and names
+        self.languageArray=[[],[]] #create clean array to languages pathes[0] and names[1]
         for language in languages_path_list: #appending items to previous array
             with open("./languages/"+language, "r") as langF:
                 langDict=json.load(langF)
 
-            languageArray[0].append(language[:-4])
+            self.languageArray[0].append(language[:-5])
             print(language[:-4])
-            languageArray[1].append(langDict["language"])
-        self.languageCombo.addItems(languageArray[1]) #adding items to language combobox
-        self.languageCombo.setCurrentIndex(1)
-
+            self.languageArray[1].append(langDict["language"])
+        self.languageCombo.addItems(self.languageArray[1]) #adding items to language combobox
+       #print(languageArray)
+        self.languageCombo.setCurrentIndex(self.languageArray[0].index(self.configDictionary["language"])) #set current language, with finding current language in language array
     ##\brief Save Config
     #\details function to write new variables, to config.json file. 
     def saveConfig(self):
-        self.configDictionary["language"]=self.languageCombo.text()#change language entry in config Dictionary
+        ##\brief index new language
+        #\details find index of new language in language array
+        indexNewLanguage=self.languageArray[1].index(self.languageCombo.currentText())
+        self.configDictionary["language"]=self.languageArray[0][indexNewLanguage]#change language entry in config Dictionary
         self.configDictionary["tieWaitResult"]=self.timeSpin.text()#change timeWaitResult in config dictionary
         with open("config.json", "w") as configFile: #open file to write changes
             json.dump(self.configDictionary, configFile) #write changes to file

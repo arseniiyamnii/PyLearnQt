@@ -1,0 +1,14 @@
+{"language": "Russian",
+  "words": {
+  "pushButton":"PushMeru",
+  "topMenuFile":"Fileru",
+  "topMenuSettings":"Settingsru",
+  "topMenuExit":"Exitru",
+  "topMenuNext":"Next Exerciseru",
+  "settingsLanguage":"Switch language fromru ",
+  "settingsTo":" toru ",
+  "settingsTime":"Switch time to watch result fromru ",
+  "wrong":"Wrong!ru",
+  "correct":"Correct!ru"
+  }
+}

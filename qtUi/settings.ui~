@@ -49,6 +49,16 @@
       <height>26</height>
      </rect>
     </property>
+    <item>
+     <property name="text">
+      <string>first el</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>sec el</string>
+     </property>
+    </item>
    </widget>
    <widget class="QSpinBox" name="spinBox">
     <property name="geometry">
