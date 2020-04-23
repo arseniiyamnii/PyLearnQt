@@ -19,7 +19,9 @@ class UI(QMainWindow):
     #connect functions to buttons,\n
     #set text to buttons from language dictionary,\n
     def __init__(self,working_exercise):
-        with open("languages/en.json", "r") as language_file: #open language file
+        with open("config.json", "r") as configFile:
+            self.configDictionary=json.load(configFile)
+        with open("languages/"+self.configDictionary["language"]+".json", "r") as language_file: #open language file
             ##\brief dictionary with language
             #\details contain dictionary with language. 
             self.language_dict = json.load(language_file)
@@ -75,7 +77,7 @@ class UI(QMainWindow):
     def resultWindow(self,answer):
         ##\brief result window object
         #\details object that contain all result window Widgets
-        self.dialog=resultClass.UI()
+        self.dialog=resultClass.UI(self.language_dict["words"]["progressBarText"])
         if answer=="true":
             self.dialog.resultLabel.setText(self.language_dict["words"]["correct"])
         else:

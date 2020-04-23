@@ -9,6 +9,9 @@
   "settingsTo":" to ",
   "settingsTime":"Switch time to watch result from ",
   "wrong":"Wrong!",
-  "correct":"Correct!"
+  "correct":"Correct!",
+  "progressBarText":"Wait a few seconds",
+  "settingsSave":"Save",
+  "settingsSaveExit":"Save and Exit"
   }
 }

@@ -11,12 +11,16 @@ import time
 class UI(QMainWindow):
     ##\brief initialise UI
     #\details show UI from result.ui file, and run timer
-    def __init__(self):
+    def __init__(self,waitText):
         super(UI, self).__init__()
         uic.loadUi("./qtUi/result.ui",self) #load result ui file, and show it
         ##\brief QLabel for result text
         #\details 
         self.resultLabel=self.findChild(QLabel, "label")
+        ##\brief label to progress Bar
+        #\details 
+        progressBarLabel=self.findChild(QLabel,"label_2")
+        progressBarLabel.setText(waitText)
         ##\brief QProgressBar for time
         #\details 
         self.timeBar=self.findChild(QProgressBar, "progressBar")

@@ -44,6 +44,7 @@ class UI(QMainWindow):
             #witch contain information about language,\n
             #and time to waiting result window
             self.configDictionary=json.load(configFile) # create dictionary, from config.json file, with json module
+        configFile.close()
         with open("./languages/"+self.configDictionary["language"]+".json","r") as langFile: #open language file
             ##\brief language dictionary
             #\details dictianary with language, from language file
@@ -58,13 +59,17 @@ class UI(QMainWindow):
         for language in languages_path_list: #appending items to previous array
             with open("./languages/"+language, "r") as langF:
                 langDict=json.load(langF)
-
+                langF.close()
             self.languageArray[0].append(language[:-5])
             print(language[:-4])
             self.languageArray[1].append(langDict["language"])
         self.languageCombo.addItems(self.languageArray[1]) #adding items to language combobox
        #print(languageArray)
         self.languageCombo.setCurrentIndex(self.languageArray[0].index(self.configDictionary["language"])) #set current language, with finding current language in language array
+        self.saveButton.setText(self.languageDictionary["words"]["settingsSave"])
+        self.saveExitButton.setText(self.languageDictionary["words"]["settingsSaveExit"])
+        self.languageLabel.setText(self.languageDictionary["words"]["settingsLanguage"])
+        self.timelabel.setText(self.languageDictionary["words"]["settingsTime"])
     ##\brief Save Config
     #\details function to write new variables, to config.json file. 
     def saveConfig(self):

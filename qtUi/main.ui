@@ -62,7 +62,6 @@
      <string>File</string>
     </property>
     <addaction name="actionSettings"/>
-    <addaction name="actionset2"/>
    </widget>
    <addaction name="menuFile"/>
   </widget>
@@ -70,11 +69,6 @@
   <action name="actionSettings">
    <property name="text">
     <string>Settings</string>
-   </property>
-  </action>
-  <action name="actionset2">
-   <property name="text">
-    <string>set2</string>
    </property>
   </action>
  </widget>

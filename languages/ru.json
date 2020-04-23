@@ -9,6 +9,9 @@
   "settingsTo":" toru ",
   "settingsTime":"Switch time to watch result fromru ",
   "wrong":"Wrong!ru",
-  "correct":"Correct!ru"
+  "correct":"Correct!ru",
+  "progressBarText":"Wait a few seconds",
+  "settingsSave":"Save",
+  "settingsSaveExit":"Save and Exit"
   }
 }
