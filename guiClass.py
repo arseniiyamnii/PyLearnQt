@@ -77,7 +77,7 @@ class UI(QMainWindow):
     def resultWindow(self,answer):
         ##\brief result window object
         #\details object that contain all result window Widgets
-        self.dialog=resultClass.UI(self.language_dict["words"]["progressBarText"])
+        self.dialog=resultClass.UI(self.language_dict["words"]["progressBarText"],self.configDictionary["tieWaitResult"])
         if answer=="true":
             self.dialog.resultLabel.setText(self.language_dict["words"]["correct"])
         else:

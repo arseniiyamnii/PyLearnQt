@@ -1,17 +1,17 @@
-{"language": "Russian",
+{"language": "Русский",
   "words": {
-  "pushButton":"PushMeru",
-  "topMenuFile":"Fileru",
-  "topMenuSettings":"Settingsru",
-  "topMenuExit":"Exitru",
-  "topMenuNext":"Next Exerciseru",
-  "settingsLanguage":"Switch language fromru ",
-  "settingsTo":" toru ",
-  "settingsTime":"Switch time to watch result fromru ",
-  "wrong":"Wrong!ru",
-  "correct":"Correct!ru",
-  "progressBarText":"Wait a few seconds",
-  "settingsSave":"Save",
-  "settingsSaveExit":"Save and Exit"
+  "pushButton":"Проверить",
+  "topMenuFile":"Файл",
+  "topMenuSettings":"Настройки",
+  "topMenuExit":"Выход",
+  "topMenuNext":"Следующее",
+  "settingsLanguage":"Сменить язык на",
+  "settingsTo":"на",
+  "settingsTime":"Время просмотра результата",
+  "wrong":"Неверно!",
+  "correct":"Верно",
+  "progressBarText":"Подождите пару секунд",
+  "settingsSave":"Сохранить",
+  "settingsSaveExit":"Сохранить и выйти"
   }
 }

@@ -11,7 +11,8 @@ import time
 class UI(QMainWindow):
     ##\brief initialise UI
     #\details show UI from result.ui file, and run timer
-    def __init__(self,waitText):
+    def __init__(self,waitText, timeWait):
+        self.timeWait=timeWait
         super(UI, self).__init__()
         uic.loadUi("./qtUi/result.ui",self) #load result ui file, and show it
         ##\brief QLabel for result text
@@ -30,9 +31,10 @@ class UI(QMainWindow):
     ##\brief progress bar method
     #\details with running timer add to progress bar 10\n to value(like 10%)
     def handleTimer(self):
+        incTime=90/int(self.timeWait)
         value = self.timeBar.value()
         if value < 90: # first value its 0
-            value = value + 30
+            value = value + incTime
             self.timeBar.setValue(value)
         else: #after 3 sec value being equal 90 (0+30+30+30)
             self.timer.stop() #stop timer
