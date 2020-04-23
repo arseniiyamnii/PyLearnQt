@@ -4,6 +4,8 @@
 from PyQt5 import uic
 from PyQt5.QtWidgets import QMainWindow, QPushButton, QLabel,QComboBox, QSpinBox
 import json
+from os import listdir
+from os.path import isfile, join
 ##\brief QT Window Settings
 #\details Manage all widgets on Settings window,\n
 #and using all functions
@@ -50,8 +52,8 @@ class UI(QMainWindow):
         self.saveExitButton.clicked.connect(self.saveConfigExit) #connect function saveConfigExit to "Save and Exit Button"
         self.timeSpin.setMinimum(1) #set minimum to spin box
         self.timeSpin.setMaximum(10) # set maximum to spin box
-        self.timeSpin.Value(int(self.configDictionary["tieWaitResult"])) # set current value to sin box (get it from config file)
-        languages_path_list = [f for f in listdir("./language") if isfile(join("./languages", f))] # get all languages pathes
+        self.timeSpin.setValue(int(self.configDictionary["tieWaitResult"])) # set current value to sin box (get it from config file)
+        languages_path_list = [f for f in listdir("./languages") if isfile(join("./languages", f))] # get all languages pathes
         languageArray=[[],[]] #create clean array to languages pathes and names
         for language in languages_path_list: #appending items to previous array
             with open("./languages/"+language, "r") as langF:
@@ -61,6 +63,7 @@ class UI(QMainWindow):
             print(language[:-4])
             languageArray[1].append(langDict["language"])
         self.languageCombo.addItems(languageArray[1]) #adding items to language combobox
+        self.languageCombo.setCurrentIndex(1)
 
     ##\brief Save Config
     #\details function to write new variables, to config.json file. 
